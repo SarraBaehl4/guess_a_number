@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Guess a number Game</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <h1> 'Guess a number' Game </h1>
+    <p id="resultat"></p>
+        
+    <script>
+        // Etape 2 de l'exercice indiv:
+        // function didIWin(givenNumber){
+        // if  (givenNumber == 22)
+        // {return "Bravo! Vous avez deviné le nombre"
+        // }
+        // else if (givenNumber > 22)
+        // {return "plus petit"
+        // }
+        // else{
+        // return "plus grand"
+        // }
+
+        //Etape3 de l'exercice
+        // function demandeNumber(){
+        //    let nombreDonne = parseInt(prompt("enterz un nombre, svp!"))
+        //     return nombreDonne
+        // }
+
+        // function didIWin(givenNumber){
+
+        //     givenNumber= demandeNumber()
+        //     if (givenNumber ==22) {return true}
+        //     else{return false}
+            
+        // }
+
+        // function gamePlay(){
+
+        //     let result = didIWin()
+        //     if (result == false) {return gamePlay()}
+        //     else{ return "Youpii!! vous avez tourvé le nombre recherché."}
+            
+        // }
+        // let message = (gamePlay())
+        // document.getElementById("resultat").innerText = message
+        // console.log(message)
+
+        // Etape4 de l'exercice
+        function guessANumber(){
+
+            let nombreentré= parseInt(prompt("Devinez un nombre entre 0 et 50 svp!"))
+                if (nombreentré >=0 && nombreentré <=50){
+                    return nombreentré
+                }
+                else{
+                    guessANumber()
+                }
+        }
+
+        function didIWin(guessedNumber){
+
+                if (guessedNumber == 22){
+                    return true
+                }
+                else{
+                    return false
+                }
+        }        
+        
+        function gamePlay(){
+            const nombredeviné = guessANumber()
+            let message1 ="🎉You got the secret number🎉"
+            let result = didIWin(nombredeviné)
+
+            if (result == false && nombredeviné > 22){
+                alert("plus petit")
+                 gamePlay()
+            }
+            else if (result == false && nombredeviné <22){
+                alert("plus grand")
+                gamePlay()
+            }
+            else{
+                return message1
+            }
+          return message1
+        }
+       
+        let result1 = gamePlay()
+        document.getElementById("resultat").innerText= result1
+   
+    </script>
+</body>
+</html>
